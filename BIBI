@@ -1,0 +1,1645 @@
+/*
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int r,c,i,j,max=0;
+    printf("Enter the number of rows in the matrix\n");
+    scanf("%d",&r);
+    printf("Enter the number of columns in the matrix\n");
+    scanf("%d",&c);
+    int *ptr=(int*)malloc(r*c*sizeof(int));
+    printf("\nEnter the elements in the matrix\n");
+    
+    
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            scanf("%d",(ptr+i*c+j));
+            if(*(ptr+i*c+j)>max)
+            {
+                max= *(ptr+i*c+j);
+            }
+        }
+        printf("%d",max);
+        max=0;
+    }
+    
+    
+    
+    
+    
+    
+    #include<stdio.h>
+#include<stdlib.h>
+
+struct std
+{
+  int id;
+  char name[25];
+  float points;
+};
+
+
+int main()
+{
+    int n=0,i=0;
+    printf("Enter value of n\n");
+    scanf("%d",&n);
+     struct std *ptr;
+     ptr=(struct std*) malloc(n*sizeof(struct std));
+    
+    for(i=0;i<n;++i)
+    {
+      //  struct std *ptr;
+   // ptr=(struct std*) malloc((n)*sizeof(struct std));
+    
+        printf("Enter detail of student %d\n",i+1);
+        
+        printf("Enter ID:\n");
+        scanf("%d",&(ptr+i)->id);
+        
+        printf("Enter name:\n");
+        // for(j=0;j!='\n';j++)
+        // {
+        //scanf("%[^\n]%*c",(ptr+i)->name); --                 not working why..?
+        scanf("\n%[^\n]%*c",(ptr+i)->name);
+        
+        printf("Enter Points:\n");
+        scanf("%f",&(ptr+i)->points);
+    }
+    for(i=0;i<n;++i)
+    {
+    //  struct std *ptr, detail[i];
+    //  ptr=&detail[i];
+    printf("\nDetail of student %d\nID: %d\nFirst Name: %s\nPoints: %.2f",i+1,(ptr+i)->id,(ptr+i)->name,(ptr+i)->points);
+    
+    }
+    return 0;
+}
+
+
+
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+struct stack
+{
+    char *s;
+    int top;
+};
+
+void initstack(struct stack *p)
+{
+    p->top=-1;
+    p->s=(char*)malloc(128*sizeof(char));
+}
+
+void push(struct stack *p,char item)
+{
+    p->s[++(p->top)]=item;
+}
+
+char pop(struct stack *p)
+{
+    return p->s[(p->top)--];
+}
+
+
+void balancedornot(struct stack p,char *par)
+{
+    int i;
+    
+    initstack(&p);
+    for(i=0;i<strlen(par);i++)
+    {
+        if(par[i]==')')
+        {
+            if(pop(&p)!='(')
+            {
+                printf("No\n");
+                return;
+            }
+        }
+        else if(par[i]==']')
+        {
+            if(pop(&p)!='[')
+            {
+                printf("No\n");
+                return;
+            }
+        }
+        else 
+        {
+            push(&p,par[i]);
+        }
+    }
+    printf("%s\n",(p.top==-1)?"Yes":"No");
+}
+
+int main()
+{
+    char s[100];
+    int n;
+    scanf("%d",&n);
+    struct stack st;
+    
+    while(n)
+    {
+        scanf("%s",s);
+        balancedornot(st,s);
+        n--;
+    }
+    return 0;
+}
+
+
+
+STACK 1
+#include<stdio.h>
+#include<stdlib.h>
+#define n 5
+
+ struct stack{
+     int a[5];
+     int top;
+     
+ }s;
+ 
+ void push(int item){
+     if(s.top==(n-1))
+     printf("Stack is full\n");
+     else
+     {
+         s.a[++s.top]=item;
+     }
+     
+ }
+ void pop(int item){
+     if(s.top==-1)
+     {
+         printf("Stack is empty\n");
+         
+     }
+     else
+     {
+         item=s.a[s.top--];
+         printf("The popped element is %d\n",item);
+     }
+ }
+ 
+ int main()
+ {
+     s.top=-1;
+     int data,i;
+     int ch;
+     do{
+         printf("Choice 1 : Push\n");
+         printf("Choice 2 : Pop\n");
+         printf("Choice 3 : Display\n");
+         printf("Any other choice : Exit\n");
+         printf("Enter your choice\n");
+         scanf("%d",&ch);
+         switch(ch){
+             case 1: printf("Enter the element to be pushed\n");
+             scanf("%d",&data);
+             push(data);
+             break;
+             
+             case 2:pop(data);
+             break;
+             case 3 :if(s.top==-1)
+             printf("The contents of the stack are{}");
+             else{
+                 printf("The contents of the stack are ");
+                 for(i=0;i<=s.top;i++){
+                     printf("%d ",s.a[i]);
+                 }
+             }
+             printf("\n");
+             break;
+             
+             default : exit(0);
+         }
+         
+     }while(ch<=3);
+     return 0;
+     
+     
+     
+     
+     
+     
+ }
+ 
+ STACK 1
+ #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define n 100
+
+struct stack
+{
+     char o[n];
+     int top;
+     
+}a;
+
+char pop()
+{
+    if(a.top==-1)
+    {
+    exit(0);
+    }
+    else
+    {
+    return a.o[a.top--];
+    }
+}
+void push(int num)
+{
+    if(a.top>=(n-1))
+    {
+    exit(0);
+    }
+    else
+    {
+    a.o[++a.top]=num;
+    }
+}
+
+int main()
+{
+    char s[30];
+    a.top=-1;
+    int len,i;
+    printf("Enter string to check it is palindrome or not :\n");
+    scanf("%s",s);
+    len=strlen(s);
+    for(i=0;i<len;i++)
+    {
+        push(s[i]);
+    }
+    int flag=1;
+    for(i=0;i<len;i++)
+    {
+        if(pop()!=s[i])
+        flag=0;
+        else
+        continue;
+    }
+    
+    
+    
+    if(flag==1)
+    {
+        printf("%s is a Palindrome string\n",s);
+    }
+    else
+    {
+        printf("%s is not a Palindrome string\n",s);
+        
+    }
+    return 0;
+}
+
+
+
+
+
+STACK 2
+#include<stdio.h>
+#include<ctype.h>
+
+char stack[100];
+int top = -1;
+
+void push(char x)
+{
+    stack[++top] = x;
+}
+
+char pop()
+{
+    if(top == -1)
+        return -1;
+    else
+        return stack[top--];
+}
+
+int priority(char x)
+{
+    if(x == '(')
+        return 0;
+    if(x == '+' || x == '-')
+        return 1;
+    if(x == '*' || x == '/')
+        return 2;
+    return 0;
+}
+
+int main()
+{
+    char exp[100];
+    char *e, x;
+    printf("Enter an expression in infix form:\n");
+    scanf("%s",exp);
+    printf("The postfix expression is:\n");
+    e = exp;
+    
+    while(*e != '\0')
+    {
+        if(isalnum(*e))
+            printf("%c",*e);
+        else if(*e == '(')
+            push(*e);
+        else if(*e == ')')
+        {
+            while((x = pop()) != '(')
+                printf("%c", x);
+        }
+        else
+        {
+            while(priority(stack[top]) >= priority(*e))
+                printf("%c",pop());
+            push(*e);
+        }
+        e++;
+    }
+    
+    while(top != -1)
+    {
+        printf("%c",pop());
+    }return 0;
+}
+
+
+
+
+
+
+STACK 2
+#include<stdio.h>
+#include<ctype.h>
+
+int stack[300],top=-1;
+
+void push(int x)
+{
+    stack[++top]=x;
+    
+}
+
+int pop()
+{
+    return stack[top--];
+}
+
+
+int main()
+{
+    char exp[100],*e;
+    int n1,n2,n3,num;
+    printf("Enter postfix expression to be evaluated: \n");
+    
+    scanf("%s",exp);
+    e=exp;
+    while(*e!='\0')
+    {
+        if(isdigit(*e))
+        {
+            num=*e-48;
+            push(num);
+        }
+        else
+        {
+            n1=pop();
+            n2=pop();
+            switch(*e)
+            {
+                case '+':
+                {
+                    n3=n1+n2;
+                    break;
+                }
+                case '-':
+                {
+                    n3=n1-n2;
+                    break;
+                }
+                case '*':
+                {
+                    n3=n1*n2;
+                    break;
+                }
+                case '/':
+                {
+                    n3=n2/n1;
+                    break;
+                }
+            }
+            push(n3);
+        }
+        e++;
+    }
+    printf("\nResult is: %d\n",pop());
+    return 0;
+}
+
+
+
+
+QUEUE
+#include<string.h>
+#include<stdlib.h>
+#include<stdio.h>
+
+struct queue
+{
+    char s[100];
+};
+
+int main()
+{
+    struct queue a[5];
+    int front=-1,rear=-1,ch,i;
+    char st[100];
+
+    do
+    {
+        printf("Choice 1 : Enter element into Queue\nChoice 2 : Delete element from Queue\nChoice 3 : Display\nAny other choice : Exit\n");
+        printf("Enter your choice\n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1: //enqueue
+                    if((front==rear+1)||((front==0)&&(rear==4)))
+
+                    {
+                        printf("Queue is full\n");
+                    }
+                    else
+                    {printf("Enter the string to be inserted = \n");
+                    scanf("%s",st);
+                        if(front==-1)
+                        front=0;
+                        rear=(rear+1)%5;
+                        strcpy(a[rear].s,st);
+                    }
+                    
+                    break;
+                    
+            case 2: //Dequeue
+
+                      if(front==-1)  //check if queue is empty
+                      {
+                          printf("Queue is empty\n");
+                      }
+                      else if (front==rear)
+                      {
+                          printf("The deleted element is %s\n",a[front].s);
+                          front=-1;
+                          rear=-1;
+                          
+                      }
+                      else
+                      {
+                          printf("The deleted element is %s\n",a[front].s);
+                          front=(front+1)%5;
+                      }
+                      
+                      
+                     break;
+            case 3: //Display
+                     if(front==-1)
+                   {
+                       printf("The contents of the queue are {}");
+                   }
+                   else
+                   {
+                       printf("The contents of the queue are");
+                       for(i=front;i<rear;i=(i+1)%5)
+                       {
+                           printf(" %s",a[i].s);
+                       }
+                       printf(" %s",a[i].s);
+                   }
+                   printf("\n");   
+                   break;
+            case 4:break;
+            default:printf("Enter valid option\n");
+        }
+        
+    } while (ch!=4);
+
+
+ return 0;   
+ 
+}
+
+
+
+
+SLL
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct node{
+    int data;
+    struct node *link;
+};
+void delete(struct node **q);
+void display(struct node *q);
+void append(struct node **q, int num);
+
+int main(void){
+    struct node *p;
+    p = NULL;
+    int n;
+    char ch[10];
+    do{
+        printf("Enter the value\n");
+        scanf("%d", &n);
+        append(&p, n);
+        printf("Do you want to add another node? Type Yes/No\n");
+        scanf("%s", ch);
+    }while(!strcmp(ch, "Yes"));
+    printf("The elements in the linked list are ");
+    display(p);
+    printf("\nThe elements in the linked list after deleting an element are ");
+    delete(&p);
+    display(p);
+    printf("\nThe elements in the linked list after deleting another element are ");
+    delete(&p);
+    display(p);
+    return 1;
+}
+
+void append(struct node **q, int num){
+    if(*q == NULL){
+        *q = (struct node *)malloc(sizeof(struct node));
+        (**q).data = num;
+    }else{
+        struct node *temp;
+        temp = *q;
+        while((*temp).link != NULL){
+            temp = (*temp).link;
+        }
+        (*temp).link = (struct node *)malloc(sizeof(struct node));
+        temp = (*temp).link;
+        (*temp).data = num;
+    }
+}
+
+void display(struct node *q){
+    struct node *temp;
+    temp = q;
+    while(temp != NULL){
+        printf("%d ", (*temp).data);
+        temp = (*temp).link;
+    }
+}
+
+void delete(struct node **q){
+    *q = (**q).link;
+}
+
+
+
+
+SLL
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct node{
+    int data;
+    struct node *link;
+};
+
+void append(struct node **q, int num) ;
+
+void display(struct node *q) ;
+int count(struct node *q) ;
+
+
+
+int main(void){
+    struct node *p;
+    p = NULL;
+    int n;
+    char ch[10];
+    do{
+        printf("Enter the value\n");
+        scanf("%d", &n);
+        append(&p, n);
+        printf("Do you want to add another node? Type Yes/No\n");
+        scanf("%s", ch);
+    }while(!strcmp("Yes", ch));
+    printf("The elements in the list are ");
+    display(p);
+    printf("\nThe number of elements in the linked list is %d", count(p));
+    return 0;
+}
+
+void append(struct node **q, int num){
+    if(*q == NULL){
+        *q = (struct node *)malloc(sizeof(struct node));
+        (**q).data = num;
+    }else{
+        struct node *temp;
+        temp = *q;
+        while((*temp).link != NULL){
+            temp = (*temp).link;
+        }
+        (*temp).link = (struct node *)malloc(sizeof(struct node));
+        temp = (*temp).link;
+        (*temp).data = num;
+    }
+}
+
+void display(struct node *q){
+    struct node *temp;
+    temp = q;
+    while(temp != NULL){
+        printf("%d ", (*temp).data);
+        temp = (*temp).link;
+    }
+}
+
+int count(struct node *q){
+    int n = 0;
+    struct node *temp;
+    temp = q;
+    while(temp != NULL){
+        n++;
+        temp = (*temp).link;
+    }
+    return n;
+}
+
+
+
+
+SLL
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct node{
+    int data;
+    struct node *link;
+};
+void display(struct node *q);
+void append(struct node **q, int num);
+void reverse(struct node **q);
+
+
+int main(void){
+    struct node *p;
+    p = NULL;
+    int n;
+    char ch[10];
+    do{
+        printf("Enter the value\n");
+        scanf("%d", &n);
+        append(&p, n);
+        printf("Do you want to add another node? Type Yes/No\n");
+        scanf("%s", ch);
+    }while(!strcmp(ch, "Yes"));
+    printf("The elements in the linked list are ");
+    display(p);
+    reverse(&p);
+    printf("\nThe elements in the reversed linked list are ");
+    display(p);
+    return 1;
+}
+
+void append(struct node **q, int num){
+    if(*q == NULL){
+        *q = (struct node *)malloc(sizeof(struct node));
+        (**q).data = num;
+    }else{
+        struct node *temp;
+        temp = *q;
+        while((*temp).link != NULL){
+            temp = (*temp).link;
+        }
+        (*temp).link = (struct node *)malloc(sizeof(struct node));
+        temp = (*temp).link;
+        (*temp).data = num;
+    }
+}
+
+void display(struct node *q){
+    struct node *temp;
+    temp = q;
+    while(temp != NULL){
+        printf("%d ", (*temp).data);
+        temp = (*temp).link;
+    }
+}
+
+void reverse(struct node **q){
+    struct node* prev = NULL;
+    struct node* current = *q;
+    struct node* next = NULL;
+    while (current != NULL) {
+        next = current->link;
+ 
+        current->link = prev;
+ 
+        prev = current;
+        current = next;
+    }
+    *q = prev;
+}
+
+
+DOUBLY 1
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct node{
+	int data;
+	struct node*prev;
+	struct node*next;
+};
+void append(struct node**head,int val){
+	struct node*p=(struct node*)malloc(sizeof(struct node));
+	p->data=val;
+	p->next=(*head);
+	p->prev=NULL;
+	if((*head) != NULL){
+		(*head)->prev=p;	
+	}
+	(*head) = p;
+}
+
+
+int count(struct node*q){
+	int n = 0;
+	struct node*temp = q;
+	while(temp != NULL){
+		n++;
+		temp = temp->next;
+	}
+	return n;
+}
+void display(struct node*p){
+	struct node*last;
+	
+	
+		
+		while(p != NULL){
+		
+		last = p;
+		p=p->next;
+	    }
+	
+	    
+		while(last != NULL){
+		printf(" %d",last->data);
+		last=last->prev;
+        }		
+	
+  }
+int main(){
+	struct node*p=NULL;
+	int n;
+	char ch[10];
+	do{
+		printf("Enter the value\n");
+		scanf("%d",&n);
+		append(&p,n);
+		printf("Do you want to add another node? Type Yes/No\n");
+		scanf("%s",ch);
+	}while(!strcmp(ch,"Yes"));
+	printf("The elements in the doubly linked list are");
+	display(p);
+	printf("\n");
+	printf("The number of nodes in the doubly linked list is %d", count(p));
+	return 0;
+}
+
+
+
+DOUBLY 1 LAB
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct emp{
+	int SSN,sal;
+	
+	char name[32],dep[32],des[32],phone[32];
+	struct emp *prev;
+	struct emp *next;
+};
+
+void insertend(struct emp **q)
+{
+	char nam[32],dp[32],ds[32],ph[32];
+	int ssn, s;
+	printf("Enter SSN\n");
+	scanf("%d",&ssn);
+	printf("Enter name\n");
+	scanf("%s",nam);
+	printf("Enter department\n");
+	scanf("%s",dp);
+	printf("Enter designation\n");
+	scanf("%s",ds);
+	printf("Enter salary\n");
+	scanf("%d",&s);
+	printf("Enter phone number\n\n");
+	if(nam[0] == 'R' && nam[1] == 'a' && ds[0] == 'T' && ds[1] == 'E'){
+	    ph[0] = '0';
+	}else{
+	scanf("%s",ph);}
+	struct emp *newn = (struct emp*)malloc(sizeof(struct emp));
+	struct emp *temp = *q;
+	for (int i=0;i<32;i++)
+	{
+		newn->name[i] = nam[i];
+		newn->dep[i] = dp[i];
+		newn->des[i] = ds[i];
+		newn->phone[i] = ph[i];
+	}
+	newn->SSN = ssn;
+	newn->sal = s;
+	newn->next = NULL;
+	if(*q == NULL)
+	{
+		newn->prev = NULL;
+		*q = newn;
+		return;
+	}
+	while(temp->next!=NULL)
+	{
+		temp = temp->next;
+	}
+	temp->next = newn;
+	newn->prev = temp;
+}
+
+
+void display(struct emp **q)
+{
+	if(q==NULL)
+	{
+		printf("EMPTY\n");
+		return;
+	}
+	int count = 0;
+	char dep[32];
+	printf("EMPLOYEE Details\n\n\n");
+	printf("SSN\nNAME\nDEPT\nDESINGATION\nSAL\nPh NO\n");
+	struct emp *newn = *q;
+	while(newn!=NULL)
+	{
+	    if (!strcmp("production",newn->dep))
+	    {
+	        strcpy (dep,"productionengineer");
+	    }
+	    else{strcpy(dep, newn->dep);}
+	    if(newn ->  phone[0] == '0'){
+	        printf("%d\n%s\n%s\n%s\n%d\n",
+			newn->SSN,newn->name,dep,newn->des,newn->sal);
+	    }else{
+		printf("%d\n%s\n%s\n%s\n%d\n%s\n",
+			newn->SSN,newn->name,dep,newn->des,newn->sal,newn->phone);}
+		newn = newn->next;
+		count += 1;
+	}
+	printf("The no of nodes in list is  %d\n",count);
+}
+
+void insertfront(struct emp **q)
+{
+	char nam[32],dp[32],ds[32],ph[32];
+	int ssn, s;
+	printf("Enter SSN\n");
+	scanf("%d",&ssn);
+	printf("Enter name\n");
+	scanf("%s",nam);
+	printf("Enter department\n");
+	scanf("%s",dp);
+	printf("Enter designation\n");
+	scanf("%s",ds);
+	printf("Enter salary\n");
+	scanf("%d",&s);
+	printf("Enter phone number\n\n\n");
+	if(nam[0] == 'R' && nam[1] == 'a' && ds[0] == 'T' && ds[1] == 'E'){
+	    ph[0] = '0';
+	}else{
+	scanf("%s",ph);}
+	struct emp *newn = (struct emp*)malloc(sizeof(struct emp));
+	
+	for (int i=0;i<32;i++)
+	{
+		newn->name[i] = nam[i];
+		newn->dep[i] = dp[i];
+		newn->des[i] = ds[i];
+		newn->phone[i] = ph[i];
+	}
+	newn->SSN = ssn;
+	newn->sal = s;
+
+	if((*q)!=NULL)
+	{
+		(*q)->prev = newn;
+		newn->next = *q;
+	}
+	*q = newn;
+	
+}
+
+void insert(struct emp **q)
+{
+	int n;
+	do
+	{
+		printf("1 Insert at Front\n2 Insert at End\n3 Exit\nEnter your choice \n");
+		scanf("%d",&n);
+		switch(n)
+		{
+			case 1 : {insertfront(q);display(q);break;}
+			case 2 : {insertend(q);display(q);break;}
+			default : continue;
+		}
+	}while(n!=3);
+	display(q);
+	return;
+}
+
+
+
+
+void delfront(struct emp **q)
+{
+	struct emp *temp = *q;
+	if(q == NULL)
+	{
+		printf("EMPTY\n");
+		return;
+	}
+	*q = temp->next;
+	(*q)->prev = NULL;
+	free(temp);
+
+}
+
+void dellast(struct emp **q)
+{
+	if(q == NULL)
+	{
+		printf("EMPTY\n");
+		return;
+	}
+	if((*q)->next == NULL)
+	{
+		(*q) = NULL;
+		free(*q);
+		return;
+	}
+	struct emp *temp = *q;
+	while(temp->next->next!=NULL)
+	{
+		temp = temp->next;
+	}
+	free(temp->next);
+	temp->next = NULL;
+
+}
+
+void del(struct emp *q)
+{
+	int n;
+	do
+	{
+		printf("1 Delete from Front\n2 Delete from End\n3 Exit\nEnter your choice   \n\n\n");
+		scanf("%d",&n);
+		switch(n)
+		{
+			case 1 :
+			{
+				delfront(&q);
+				printf("Front node is deleted\n");
+				display(&q);
+				break;
+			}
+			case 2 :
+			{
+				dellast(&q);
+				printf("Last entry is deleted\n");
+				display(&q);
+				break;
+			}
+			default : continue;
+		}
+	}while(n!=3);
+	display(&q);
+	return;
+}
+
+void queue(struct emp *q)
+{
+	int n,a,b;
+	do
+	{
+		printf("DLL used as Double Ended Queue\n1 QUEUE- Insert at Rear and Delete from Front\n2 QUEUE- Insert at Front and Delete from Rear\n3 Exit\nEnter your choice \n\n\n");
+
+		scanf("%d",&n);
+		switch(n)
+		{
+			case 1:
+			{
+				do
+				{
+					printf("1 Insert at Rear\n2 Delete from From Front\n3 Exit\nEnter your choice \n");
+					scanf("%d",&a);
+					switch(a)
+					{
+						case 1 :
+						{
+							insertend(&q);
+							printf("\n");
+							break;
+						}
+						case 2:
+						{
+							delfront(&q);
+							break;
+						}
+						default : continue;
+					}
+				}while(a!=3);
+				break;
+			}
+			case 2 :
+			{
+				do
+				{
+					printf("1 Insert at Front\n2 Delete from Rear\n3 Exit\nEnter your choice \n");
+					scanf("%d",&b);
+					switch(b)
+					{
+						case 1:
+						{
+							insertfront(&q);
+							break;
+						}
+						case 2:
+						{
+							dellast(&q);
+							break;
+						}
+						default : continue;
+					}
+				}while(b!=3);
+				break;
+			}
+			default : continue;
+		}
+	}while(n!=3);
+	display(&q);
+	return;
+}
+
+int main()
+{
+    printf("Employee Details\n");
+	int n;
+	struct emp *p;
+    p = NULL;
+	do
+	{
+		printf("1 Create\n2 Display\n3 Insert\n 4Delete\n5 Queue\n6Exit\nEnter your choice \n\n\n");
+		scanf("%d",&n);
+		switch(n)
+		{
+			case 1:
+			{
+				int num,i;
+				printf("How many employees data you want to create \n");
+				scanf("%d",&num);
+				for(i=0;i<num;i++)
+				{
+					insertend(&p);
+				}
+				break;
+			}
+			case 2:
+			{
+				display(&p);
+				break;
+			}
+			case 3 :
+			{
+				insert(&p);
+				break;
+			}
+			case 4:
+			{
+				del(p);
+				break;
+			}
+			case 5:
+			{
+				queue(p);
+				break;
+			}
+
+			default : continue;
+		}
+	}while(n!=6);
+	return 0;
+}
+
+
+DOUBLY 2;
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct node{
+	int data;
+	struct node*prev;
+	struct node*next;
+};
+void append(struct node**head,int val){
+	struct node*p=(struct node*)malloc(sizeof(struct node));
+	p->data=val;
+//	p->prev=(*head);
+	p->next=NULL;
+	struct node * q=(struct node*)malloc(sizeof(struct node));
+	q=*head;
+	if(q==NULL)
+	{
+	    p->prev=NULL;
+	    *head=p;
+	}
+	else{
+	    while(q->next!=NULL)
+	    {
+		q=q->next;	
+	    }
+	    q->next=p;
+	    p->prev=q;
+	}
+	//(*head) = p;
+}
+void display(struct node*q){
+	while(q != NULL){
+		printf(" %d",q->data);
+		q = q->next;
+	}
+}
+void addafter(struct node **q ,int a,int n)
+{
+    int i;
+    struct node*p=(struct node*)malloc(sizeof(struct node));
+   struct node*t=(struct node*)malloc(sizeof(struct node));
+    struct node*r=(struct node*)malloc(sizeof(struct node));
+    p=*q;
+    r->data=n;
+    for(i=0;i<a-1;i++)
+    {
+        p=p->next;
+    }
+    if(p->next!=NULL)
+    {
+    t=p->next;
+    r->next=p->next;
+    r->prev=p;
+    t->prev=r;
+    p->next=r;
+    }
+    else{
+        p->next=r;
+        r->prev=p;
+        r->next=NULL;
+    }
+}
+int main(){
+	struct node*head = NULL;
+	int n;
+	int n1;
+	int a;
+	int count=0;
+	char ch[10];
+	do{
+		printf("Enter the value\n");
+		scanf("%d",&n);
+		count++;
+		append(&head,n);
+		printf("Do you want to append another node? Type Yes/No\n");
+		scanf("%s",ch);
+	}while(!strcmp(ch,"Yes"));
+	printf("The elements in the linked list are \n");
+	display(head);
+	printf("\n");
+	do
+	{
+	printf("Enter the position after which you want to add another node\n");
+	scanf("%d",&a);
+	printf("Enter the value\n");
+	scanf("%d",&n1);
+	addafter(&head,a,n1);
+	printf("The elements in the linked list are \n");
+	display(head);
+	printf("\n");
+	printf("Do you want to add another node after a certain position? Type Yes/No\n");
+	scanf("%s",ch);
+	}while(!strcmp(ch,"Yes"));
+	//printf("The elements in the linked list are \n");
+	//display(head);
+	printf("\n");
+	return 0;
+}
+
+
+
+
+DOUBLY 2
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct node
+{
+    int data;
+    struct node *pre,*next;
+}typedef *ptr;
+void insert(ptr *p,int num)
+{
+    ptr temp,a;
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->data=num;
+    if(*p==NULL)
+    {
+        temp->next=NULL;
+        temp->pre=NULL;
+        *p=temp;
+    }
+    else
+    {   
+        a=*p;
+        while(a->next!=NULL)
+        a=a->next;
+        temp->pre=a;
+        temp->next=NULL;
+        a->next=temp;
+    }
+}
+void display(ptr *p)
+{
+    ptr temp;
+    temp=*p;
+    while(temp->next!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+    printf("%d",temp->data);
+}
+int count(ptr *p)
+{
+    ptr temp;
+    temp=*p;
+    int l;
+    l=temp->data;
+    while(temp!=NULL)
+    {
+       if((temp->data)>l)
+       l=temp->data;
+       temp=temp->next;
+    }
+    return l;
+}
+int main()
+{
+    ptr p;
+    p=NULL;
+    int data,c;
+    char op[20];
+    do
+    {
+        printf("Enter node value:\n");
+        scanf("%d",&data);
+        insert(&p,data);
+        printf("Do you want to enter more?(Y or N)\n");
+        scanf("%s",op);
+    }while(!(strcmp(op,"y")));
+    printf("Linked list is ");
+    display(&p);
+    printf("\n");
+    c=count(&p);
+    printf("Largerst node is %d",c);
+    return 0;
+}
+
+
+
+
+
+
+SINGLEY CIRCULAR
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+void append(struct node**,int);
+void addafter(struct node*,int,int);
+void display(struct node*);
+
+int main()
+{
+    struct node *head=NULL;
+    int num,pos,val;
+    char ch[10];
+    do
+    {
+         printf("Enter the value\n");
+         scanf("%d",&num);
+         append(&head,num);
+         printf("Do you want to append another node? Type Yes/No\n");
+         scanf("%s",ch);
+    }while(!strcmp(ch,"Yes"));
+    printf("The elements in the linked list are");
+    display(head);
+    printf("\n");
+    do
+    {
+        printf("Enter position after which youn want to add another node\n");
+        scanf("%d",&pos);
+        printf("Enter the value\n");
+        scanf("%d",&val);
+        addafter(head,pos,val);
+        printf("The elements in the linked list are");
+        display(head);
+        printf("\n");
+        printf("Do you want to add another node after a certain position? Type Yes/No\n");
+        scanf("%s",ch);
+    }while(!strcmp(ch,"Yes"));
+    return 0;
+    }
+    void append(struct node **head,int val)
+{
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=val;
+    newnode->link=NULL;
+    if((*head)==NULL)
+    {
+        (*head)=newnode;
+        return;
+    }
+    struct node *temp=(*head);
+    while(temp->link!=NULL)
+    {
+        temp=temp->link;
+    }
+    temp->link=newnode;
+}        
+        void display(struct node *head)
+        {
+            struct node *temp=head;
+            while(temp!=NULL)
+            {
+                printf(" %d",temp->data);
+                temp=temp->link;
+            }
+        }
+        void addafter(struct node *head,int pos,int n)
+        {
+            int ind=0;
+            while(ind!=pos && head->link!=NULL)
+            {
+                head=head->link;
+                ind++;
+            }
+            if(ind<pos)
+            {
+                printf("There are less than %d elements in the linked list\n",pos);
+                return;
+            }
+            struct node *temp,*newnode;
+            newnode=(struct node*)malloc(sizeof(struct node));
+            temp=head->link;
+            newnode->data=n;
+            newnode->link=temp;
+            head->link=newnode;
+        }
+        
+        
+        
+        
+   SSCIRCULAR     
+ #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+ struct node
+ {
+     int data;
+     struct node *link;
+ };
+ void append(struct node **q,int num);
+ int count(struct node *q);
+ void display(struct node *q);
+ int findmid(struct node *q);
+ 
+ int main()
+ {
+     int num;
+     char ch[10];
+     struct node *head=NULL;;
+     do
+     {
+         printf("Enter the value\n");
+         scanf("%d",&num);
+         append(&head,num);
+         printf("Do you want to add another node? Type Yes/No\n");
+         scanf("%s",ch);
+     }while(!strcmp(ch,"Yes"));
+     printf("The elements in the linked list are");
+     display(head);
+     printf("\n");
+     printf("The middle element in the linked list is %d",findmid(head));
+     return 0;
+ }
+ void append(struct node **q,int num)
+ {
+     struct node *newnode=(struct node*)malloc(sizeof(struct node));
+     newnode->data=num;
+     newnode->link=NULL;
+     if((*q)==NULL)
+     {
+         (*q)=newnode;
+         return;
+     }
+     struct node *temp=(*q);
+     while(temp->link!=NULL)
+     {
+         temp=temp->link;
+     }
+     temp->link=newnode;
+ }
+ int count(struct node *q)
+ {
+     int l=0;
+     struct node *temp=q;
+     while(temp!=NULL)
+     {
+         l++;
+         temp=temp->link;
+     }
+     return l;
+ }
+ int findmid(struct node *q)
+ {
+     struct node *temp=q;
+     int len=count(q);
+     int pos=len/2;
+     int index;
+     if(len%2!=0)
+     {
+         index=0;
+         while(index<pos)
+         {
+             temp=temp->link;
+             index++;
+             }
+     }
+     else
+     {
+         index=1;
+         while(index<pos)
+         {
+             temp=temp->link;
+             index++;
+         }
+     }
+     return temp->data;
+ }
+ void display(struct node *q)
+ {
+     struct node *temp=q;
+     while(temp!=NULL)
+     {
+         printf(" %d",temp->data);
+         temp=temp->link;
+     }
+ }
+ 
+ 
+ 
+ 
+ BST 
+ #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct node
+{
+    int data;
+    struct node *leftChild;
+    struct node *rightChild;
+};
+struct node *root=NULL;
+void insert(int data)
+{
+    struct node *new_node=(struct node*)malloc(sizeof(struct node));
+    struct node *parent,*current;
+    new_node->data=data;
+    new_node->leftChild=NULL;
+    new_node->rightChild=NULL;
+    if(root==NULL)
+    {
+        root=new_node;
+        return;
+    }
+    else
+    {
+        current=root;
+        parent=NULL;
+    }
+    while(1)
+    {
+        parent=current;
+        if(data<parent->data)
+        {
+            current=current->leftChild;
+            if(current==NULL)
+            {
+                parent->leftChild=new_node;
+                return;
+            }
+        }
+        else
+        {
+            current=current->rightChild;
+            if(current==NULL)
+            {
+                parent->rightChild=new_node;
+                return;
+            }
+        }
+    }
+}
+void preorder(struct node *root)
+{
+    if(root!=NULL)
+    {
+        printf(" %d",root->data);
+        preorder(root->leftChild);
+        preorder(root->rightChild);
+    }
+}
+void inorder(struct node *root)
+{
+    if(root!=NULL)
+    {
+    inorder(root->leftChild);
+    printf(" %d",root->data);
+    inorder(root->rightChild);
+    }
+}
+void postorder(struct node *root)
+{
+    if(root!=NULL)
+    {
+        postorder(root->leftChild);
+        postorder(root->rightChild);
+        printf(" %d",root->data);
+    }
+}
+int main()
+{
+    int n;
+    //struct node *root=NULL;
+    char ch[3];
+    do
+    {
+        printf("Enter the element to be inserted in the tree\n");
+        scanf("%d",&n);
+        insert(n);
+        printf("Do you want to insert another element?");
+        scanf("%s",ch);
+    }while(!strcmp(ch,"yes"));
+    printf("Inorder Traversal : The elements in the tree are");
+    inorder(root);
+    printf("\nPreorder Traversal : The elements in the tree are");
+    preorder(root);
+    printf("\nPostorder Traversal : The elements in the tree are");
+    postorder(root);
+    return 0;
+}
+
+
+*/
